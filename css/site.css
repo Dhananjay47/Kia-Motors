@@ -1,0 +1,175 @@
+#main {
+    padding-top: 70px;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+input.ng-touched.ng-invalid {
+    border: 2px #ff0000 solid;
+}
+
+.statementDetails:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.modal-backdrop {
+    bottom: 0;
+    position: fixed;
+}
+
+.account-details-right {
+    text-align: right;
+    padding-right: 20px;
+    line-height: 1.5;
+}
+
+.the-legend {
+    border-style: none;
+    border-width: 0;
+    line-height: 20px;
+    margin-bottom: 0;
+}
+
+#tb-glyphicon {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #f9f9f9;
+}
+
+.oddRow {
+    background-color: #f9f9f9;
+}
+
+.evenRow {
+    background-color: #ffffff;
+}
+
+
+/* Different size for other amount in pos UI */
+
+#posOtherAmount::-webkit-input-placeholder {
+    font-size: 15px;
+}
+
+#posOtherAmount:-moz-placeholder {
+    font-size: 15px;
+}
+
+#posOtherAmount::-moz-placeholder {
+    font-size: 15px;
+}
+
+#posOtherAmount:-ms-input-placeholder {
+    font-size: 15px;
+}
+
+.white-background {
+    background-color: #ffffff;
+}
+
+.mouseOverRow {
+    background-color: azure;
+}
+
+.glyphicon.glyphicon-hand-down {
+    font-size: 1.5em;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+ul.image-thumbs {
+    margin: 0;
+    list-style: none;
+}
+
+ul.image-thumbs li {
+    border: 1px solid black;
+    display: inline-block;
+    margin: 1em;
+    background-color: white;
+}
+
+ul.image-thumbs img {
+    height: 80px;
+    width: 160px;
+    padding: 0.5em;
+}
+
+@media (min-width: 768px) {
+    .modal-xl {
+        width: 90%;
+        max-width: 1200px;
+    }
+}
+
+.zoomed {
+    margin-left: 4em;
+}
+
+.original,
+.zoomed {
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.original img {
+    /* max-height: 300px; */
+    max-width: 750px;
+    width: auto;
+}
+
+.zoomed img {
+    height: 600px;
+    position: relative;
+}
+
+.mark {
+    opacity: .3;
+    border: 6px dotted #fff;
+    background: #eee;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+aside {
+    position: absolute;
+    right: 0;
+    max-width: 30%;
+}
+
+.showText {
+    opacity: 1;
+}
+
+.hideText {
+    opacity: 0.01;
+}

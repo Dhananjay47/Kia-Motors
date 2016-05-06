@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{ 'pendingPayments' | translate }} <span class="badge">{{pendingPayments.length}}</span>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-striped" ng-show="pendingPayments.length">
+    <thead>
+        <tr>
+            <td translate>Date</td>
+            <td translate>CardType</td>
+            <td translate>ExpirationDate</td>
+            <td translate>Last4</td>
+            <td style="text-align: right;" translate>Amount</td>
+            <td translate>Status</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="pending in pendingPayments">
+            <td>{{ pending.TenderDate | date : 'MM/dd/yy HH:mm' }}</td>
+            <td>{{ pending.PaymentTypeName }}</td>
+            <td>{{ pending.CardExpirationDate }}</td>
+            <td>{{ pending.ACHLast4 }}{{ pending.CardNumberLast4 }}</td>
+            <td style="text-align: right;">{{ pending.Amount | currency }}</td>
+            <td>{{ pending.StatusName }}</td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+</div>

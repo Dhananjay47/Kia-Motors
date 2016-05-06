@@ -1,0 +1,53 @@
+<tb-account>
+    <tb-account-info info-label='Name' info-field='Name' info-value="{{vm.account.Name}} ">
+        <input id="accountName" name="accountName" ng-model="vm.account.Name" required placeholder="{{Name | translate}}" />
+    </tb-account-info>
+
+    <tb-account-info info-label='Type' info-field='AccountType' info-value="{{vm.account.AccountType}} ">
+        <select ng-model="vm.account.AccountType" name="accountType" id="accountType" required ng-options="accountType.Name as accountType.Name for accountType in vm.accountTypes">
+            <option value=''>--</option>
+        </select>
+    </tb-account-info>
+
+    <div class="row ">
+        <div class="col-sm-8 ">
+            <div class="row " ng-repeat="alias in vm.aliases" ng-class-odd=" 'oddRow' " ng-class-odd=" 'evenRow' ">
+                <div class="col-sm-2 "><strong>{{ alias.Type | translate }}</strong></div>
+                <div class="col-sm-offset-1 col-sm-8 ">{{ alias.Alias }}</div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <h4 translate>{{ 'Contacts' | translate }}</h4>
+    <tb-account-info info-label='Email' info-field='EmailAddress' info-value="{{vm.account.EmailAddress}} ">
+        <input id="email" name="email" type="email" ng-model="vm.account.EmailAddress" placeholder="username@mail.com" />
+    </tb-account-info>
+    <tb-account-info info-label='Phone' info-field='Phone' info-value="{{vm.account.Phone}} ">
+        <input id="Phone" name="Phone" ng-model="vm.account.Phone" placeholder="888-888-8888" />
+    </tb-account-info>
+
+    <address>   
+        <tb-account-address type='billing' data="vm.account.BillingAddress"></tb-account-address>
+    </address>
+    <address>
+        <tb-account-address type='shipping' data="vm.account.ShippingAddress"></tb-account-address>
+    </address>
+
+    <!--
+<address>   
+        <tb-address data="address"></tb-address>
+    </address>
+<address>
+        <tb-address data="address"></tb-address>
+    </address>-->
+
+    <hr />
+    <h4 translate>{{ 'Replenishment' | translate }}</h4>
+    <tb-account-info info-label='Threshold' info-field='ReloadThresholdAmount' info-value="{{vm.account.ReloadThresholdAmount | currency}} ">
+        <input id="replenishment" name="replenishment" type="text" ng-model="vm.account.ReloadThresholdAmount" required />
+    </tb-account-info>
+    <tb-account-info info-label='Amount' info-field='ReloadAmount' info-value="{{vm.account.ReloadAmount | currency}} ">
+        <input id="reloadAmount" name="reloadAmount" type="text" ng-model="vm.account.ReloadAmount" required />
+    </tb-account-info>
+</tb-account>

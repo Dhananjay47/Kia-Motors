@@ -1,0 +1,59 @@
+  <fieldset class="well well-sm fieldset">
+    <legend class="the-legend" translate>{{'FinancialInstitutionInfo' | translate}}</legend>
+    <div forminput class="row">
+      <label for="institutionName" class="col-md-2">{{'InstitutionName' | translate}}</label>
+      <div class="col-md-6">
+          <input id="institutionName" name="institutionName" type="text" ng-model="payment.PaymentMethod.InstitutionName" placeholder="{{'BankOfYourChoice' | translate}}" required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="routingNumber" class="col-md-2">{{'RoutingNumber' | translate}}</label>
+      <div class="col-md-6">
+        <input id="routingNumber" name="routingNumber" type="text" ng-model="payment.PaymentMethod.RoutingNumber" 
+          ng-pattern="/^((0[0-9])|(1[0-2])|(2[1-9])|(3[0-2])|(6[1-9])|(7[0-2])|80)([0-9]{7})$/" 
+          placeholder="{{'9DigitsNumber' | translate}}"      
+          required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="accountNumber" class="col-md-2">{{ 'AccountNumber' | translate }}</label>
+      <div class="col-md-6">
+        <input id="accountNumber" name="accountNumber" type="text" ng-model="payment.PaymentMethod.AccountNumber" placeholder="{{ 'AccountNumber' | translate }}" required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="accountHolder" class="col-md-2">{{ 'AccountHolder' | translate }}</label>
+      <div class="col-md-6">
+        <input id="accountHolder" name="accountHolder" type="text" ng-model="payment.PaymentMethod.AccountHolderName" placeholder="{{ 'FullName' | translate }}"required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="email" class="col-md-2" translate>Email</label>
+      <div class="col-md-6">
+        <input id="email" name="email" type="email" ng-model="payment.PaymentMethod.EmailAddress" placeholder="youremail@example.com">
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="notes" class="col-md-2" translate>Notes</label>
+      <div class="col-md-6">
+        <textarea id="notes" name="notes" rows="2" ng-model="payment.Note" placeholder="{{ 'Notes' | translate }}" />
+      </div>
+    </div>    
+    <div class="row" forminput>
+      <label for="accountType" class="col-md-2">{{'AccountType' | translate}}</label>
+      <div id="accountType" class="col-md-6">
+        <label class="radio-inline">
+          <input type="radio" name="accountType" id="accountTypeChecking" ng-model="payment.PaymentMethod.AccountTypeCode" value=69000 
+            ng-required="!payment.PaymentMethod.AccountTypeCode"><span>{{"Checking" | translate}}</span>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="accountType" id="accountTypeSaving" ng-model="payment.PaymentMethod.AccountTypeCode" value=69001  
+            ng-required="!payment.PaymentMethod.AccountTypeCode"><pan>{{"Savings" | translate}}</span>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="accountType" id="accountTypeChecking" ng-model="payment.PaymentMethod.AccountTypeCode" value=69002 
+            ng-required="!payment.PaymentMethod.AccountTypeCode"><pan>{{"Others" | translate}}</span>
+        </label>        
+      </div>
+    </div>
+  </fieldset>

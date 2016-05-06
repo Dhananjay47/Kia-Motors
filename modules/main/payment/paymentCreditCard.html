@@ -1,0 +1,71 @@
+  <fieldset class="well well-sm the-fieldset">
+    <legend class="the-legend" translate>CreditCardInfo</legend>
+    <div forminput class="row">
+      <label for="firstName" class="col-md-2" translate>FirstName</label>
+      <div class="col-md-6">        
+        <input id="firstName" name="firstName" type="text" ng-model="payment.PaymentMethod.FirstName" placeholder="{{ 'FirstName' | translate }}" required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="lastName" class="col-md-2" translate>LastName</label>
+      <div class="col-md-6">        
+        <input id="lastName" name="lastName" type="text" ng-model="payment.PaymentMethod.LastName" placeholder="{{ 'LastName' | translate }}" required>
+      </div>
+    </div>
+    <div forminput class="row">
+        <label for="email" class="col-md-2" translate>Email</label>
+      <div class="col-md-6">
+        <input id="email" name="email" type="email" ng-model="payment.PaymentMethod.EmailAddress" placeholder="youremail@example.com">
+      </div>
+    </div>    
+    <div forminput class="row">
+      <label for="phoneNumber" class="col-md-2">{{'PhoneNumber' | translate }}</label>
+      <div class="col-md-6">
+        <input id="phoneNumber" name="phoneNumber" type="tel" ng-model="payment.PaymentMethod.PhoneNumber" placeholder="8881234567">
+      </div>
+    </div>     
+    <tb-address data="address"></tb-address>
+    <div forminput class="row">
+        <label for="cardType" class="col-md-2" translate>CardType</label>
+      <div class="col-md-6">
+        <select id="cardType" name="cardType" ng-model="payment.PaymentMethod.CardType" ng-options="type for type in ['Visa','MasterCard','Discover','American Express']" required>
+          <option value=''>--</option>
+        </select>
+      </div>
+    </div>           
+    <div forminput class="row">
+      <label for="cardNumber" class="col-md-2">{{'CardNumber' | translate }}</label>
+      <div class="col-md-6">
+          <input id="cardNumber" name="cardNumber" type="text" ng-model="payment.PaymentMethod.CardNumber" placeholder="{{'16DigitsNumber' | translate}}" pattern="[0-9]{13,16}" ng-minlength="16" ng-maxlength="16" required>
+      </div>
+    </div>   
+    <div forminput class="row">
+      <label for="verifyCardNumber" class="col-md-2" translate>VerifyCardNumber</label>
+      <div class="col-md-6">
+          <input id="verifyCardNumber" name="verifyCardNumber" type="text" ng-model="payment.PaymentMethod.VerifyCardNumber" placeholder="{{'16DigitsNumber' | translate}}" pattern="[0-9]{13,16}" required>
+      </div>
+    </div>  
+    <div forminput class="row">
+        <label for="expMonth" class="col-md-2" translate>ExpirationDate</label>
+      <div class="col-md-2">
+        <select id="expMonth" name="expMonth" ng-model="expMonth" required>
+          <option value=''>--</option>
+          <option ng-repeat="month in months track by $index">{{ $index+1 }}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select id="expYear" name="expYear" ng-model="expYear" class="form-control" required>
+          <option value=''>----</option>
+          <option ng-repeat="year in years track by $index" ng-init="startYear = $index + thisYear">{{startYear}}</option>
+        </select>
+      </div>
+    </div>  
+    <div forminput class="row">
+        <label for="cardCode" class="col-md-2" translate>CardCode</label>
+      <div class="col-md-6">
+        <input id="cardCode" name="cardCode" type="text" ng-model="payment.PaymentMethod.CSC" required>
+      </div>
+    </div>                       
+  </fieldset>
+
+  

@@ -1,0 +1,13 @@
+<div class="row" ng-class="{mouseOverRow: hover}" ng-mouseover="hover = true" ng-mouseleave="hover = false">
+    <div class="col-sm-2">
+        {{ notes.CreateDate | date:'MM/dd/yy' }}
+    </div>
+    <div class="col-sm-9">
+        {{ notes.Text }}
+    </div>
+    <div class="col-sm-1">
+        <button type="button" class="btn btn-default" ng-click="clickEdit()">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true" translate></span>
+        </button>
+    </div>
+</div>

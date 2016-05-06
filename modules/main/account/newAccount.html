@@ -1,0 +1,49 @@
+<form name="accountForm" class="form-horizontal" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">New Account</h3>
+    </div>
+    <div class="modal-body">
+        <div forminput class="row">
+            <label for="clientId" class="col-md-2">{{ 'Client' | translate }}</label>
+            <div class="col-md-6">
+                <select ng-model="vm.account.ClientID" name="clientId" id="clientId" required ng-options="client.ID as client.Name for client in vm.clients" class="form-control">
+                    <option value=''>--</option>
+                </select>
+            </div>
+        </div>
+        <div forminput class="row" ng-if="vm.account.ClientID">
+            <label for="name" class="col-md-2">{{ 'Name' | translate }}</label>
+            <div class="col-md-6">
+                <input id="name" name="name" type="text" ng-model="vm.account.Name" required>
+            </div>
+        </div>
+        <div forminput class="row" ng-if="vm.account.ClientID">
+            <label for="accountType" class="col-md-2">{{ 'Type' | translate }}</label>
+            <div class="col-md-6">
+                <select ng-model="vm.account.AccountType" name="accountType" id="accountType" required ng-options="accountType.Value as accountType.Name for accountType in vm.accountTypes" class="form-control"></select>
+            </div>
+        </div>
+
+        <div forminput class="row" ng-if="vm.account.ClientID">
+            <label for="email" class="col-md-2" translate>{{ 'Email' | translate }}</label>
+            <div class="col-md-6">
+                <input id="email" name="email" type="email" ng-model="vm.account.EmailAddress">
+            </div>
+        </div>
+        <div forminput class="row" ng-if="vm.account.ClientID">
+            <label for="phone" class="col-md-2" translate>{{ 'Phone' | translate }}</label>
+            <div class="col-md-6">
+                <input id="phone" name="phone" type="tel" ng-model="vm.account.PhoneNumber">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="accountForm.$invalid" ng-click="$close(vm.account)">
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" ng-click="$dismiss()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+    </div>
+</form>

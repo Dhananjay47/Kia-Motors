@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+	<div class="panel-heading" translate>
+		{{search.queryMethod}}: {{search.queryString}}
+	</div>
+
+	<div class="panel-body" ng-switch="search.queryMethod">
+		<div ng-switch-when="Plate"><div ui-view="vehicleList"></div></div>
+		<div ng-switch-when="Transponder"><div ui-view="vehicleList"></div></div>
+		<div ng-switch-when="Name"><div ui-view="userList"></div></div>
+		<div ng-switch-default="AccountNumber"><div ui-view="accoutList"></div></div>
+	</div>
+</div>

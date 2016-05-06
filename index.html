@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <base href="/" />
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Toll Booth</title>
+
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-ui-grid/ui-grid.css" />
+    <link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/site.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+
+<body ng-app="tollbooth" ng-strict-di>
+    <div ng-controller="MainController">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <work-spinner>
+                        <i class="fa fa-spinner fa-pulse fa-2x"></i>
+                    </work-spinner>
+                    <a class="navbar-brand" ui-sref="agentHome">Toll 3.0</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <tb-nav-bar>
+                        <translater></translater>
+                        <tb-new-account></tb-new-account>
+                        <account-search></account-search>
+                        <tb-user></tb-user>
+                    </tb-nav-bar>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="main">
+
+        <div class="container-fluid">
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+            <div ui-view></div>
+        </div>
+
+    </div>
+
+    <!-- build:js js/lib.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-translate/angular-translate.js"></script>
+    <script src="../bower_components/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+    <script src="../bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="../bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="../bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/ng-idle/angular-idle.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js js/app.js -->
+    <!-- inject:js -->
+    <script src="app.js"></script>
+    <script src="modules/accounting/accounting.module.js"></script>
+    <script src="modules/imageViewer/imageviewer.module.js"></script>
+    <script src="modules/pos/pos.module.js"></script>
+    <script src="modules/register/register.module.js"></script>
+    <script src="modules/report/report.module.js"></script>
+    <script src="modules/imageViewer/transactions/transactions.module.js"></script>
+    <script src="modules/main/account/account.module.js"></script>
+    <script src="modules/main/activity/activity.module.js"></script>
+    <script src="modules/main/notes/notes.module.js"></script>
+    <script src="modules/main/payment/payment.module.js"></script>
+    <script src="modules/main/user/user.module.js"></script>
+    <script src="modules/main/vehicle/vehicle.module.js"></script>
+    <script src="modules/main/common/modules/common.module.js"></script>
+    <script src="modules/main/common/modules/forms.module.js"></script>
+    <script src="modules/main/common/modules/message.module.js"></script>
+    <script src="modules/main/common/modules/security.module.js"></script>
+    <script src="modules/main/common/modules/translate.module.js"></script>
+    <script src="modules/main/common/modules/ui.module.js"></script>
+    <script src="modules/register/registerController.js"></script>
+    <script src="modules/register/resultController.js"></script>
+    <script src="modules/report/tbReport.js"></script>
+    <script src="modules/accounting/financialDetails/journalEntriesController.js"></script>
+    <script src="modules/accounting/financialDetails/journalEntriesResource.js"></script>
+    <script src="modules/accounting/financialDetails/journalItemEditController.js"></script>
+    <script src="modules/imageViewer/transactions/selectTransaction.js"></script>
+    <script src="modules/imageViewer/transactions/tbTransactionClassMismatches.js"></script>
+    <script src="modules/imageViewer/transactions/tbTransactionDetails.js"></script>
+    <script src="modules/imageViewer/transactions/tbTransactionImages.js"></script>
+    <script src="modules/imageViewer/transactions/tbTransactionList.js"></script>
+    <script src="modules/imageViewer/transactions/tbTransactionSearch.js"></script>
+    <script src="modules/imageViewer/transactions/tbZoom.js"></script>
+    <script src="modules/imageViewer/transactions/transactionResource.js"></script>
+    <script src="modules/imageViewer/transactions/transactionResourceMock.js"></script>
+    <script src="modules/imageViewer/transactions/transactionController.js"></script>
+    <script src="modules/imageViewer/transactions/vehicleMismatchResource.js"></script>
+    <script src="modules/main/account/accountDetailsController.js"></script>
+    <script src="modules/main/account/accountListController.js"></script>
+    <script src="modules/main/account/accountResource.js"></script>
+    <script src="modules/main/account/addressEditController.js"></script>
+    <script src="modules/main/account/addressResource.js"></script>
+    <script src="modules/main/account/aliasResource.js"></script>
+    <script src="modules/main/account/newAccount.js"></script>
+    <script src="modules/main/account/tbNewAccount.js"></script>
+    <script src="modules/main/account/testController.js"></script>
+    <script src="modules/main/activity/activityController.js"></script>
+    <script src="modules/main/activity/caseResource.js"></script>
+    <script src="modules/main/activity/promptInputs.js"></script>
+    <script src="modules/main/activity/statementDetailing.js"></script>
+    <script src="modules/main/activity/statementResource.js"></script>
+    <script src="modules/main/activity/tbActivities.js"></script>
+    <script src="modules/main/activity/tbStatementDetails.js"></script>
+    <script src="modules/main/activity/workflow.js"></script>
+    <script src="modules/main/notes/noteController.js"></script>
+    <script src="modules/main/notes/noteResource.js"></script>
+    <script src="modules/main/notes/tbNotes.js"></script>
+    <script src="modules/main/payment/confirmPayment.js"></script>
+    <script src="modules/main/payment/fillPayment.js"></script>
+    <script src="modules/main/payment/makePaymentController.js"></script>
+    <script src="modules/main/payment/paymentController.js"></script>
+    <script src="modules/main/payment/paymentResource.js"></script>
+    <script src="modules/main/payment/selectPaymentMethod.js"></script>
+    <script src="modules/main/payment/selectPaymentMethodController.js"></script>
+    <script src="modules/main/payment/tbPaymentMethod.js"></script>
+    <script src="modules/main/user/userController.js"></script>
+    <script src="modules/main/user/userResource.js"></script>
+    <script src="modules/main/vehicle/selectVehicle.js"></script>
+    <script src="modules/main/vehicle/tbVehicle.js"></script>
+    <script src="modules/main/vehicle/vehicleController.js"></script>
+    <script src="modules/main/vehicle/vehicleDetailsController.js"></script>
+    <script src="modules/main/vehicle/vehicleListController.js"></script>
+    <script src="modules/main/vehicle/vehicleResource.js"></script>
+    <script src="modules/pos/pointOfSale/laneResource.js"></script>
+    <script src="modules/main/account/accountTab/tbAccount.js"></script>
+    <script src="modules/main/account/accountTab/tbAccountAddress.js"></script>
+    <script src="modules/main/account/accountTab/tbAccountInfo.js"></script>
+    <script src="modules/main/common/controllers/loginController.js"></script>
+    <script src="modules/main/common/directives/tbAccountSearch.js"></script>
+    <script src="modules/main/common/directives/tbAddress.js"></script>
+    <script src="modules/main/common/directives/tbAlerts.js"></script>
+    <script src="modules/main/common/directives/tbAutoFocus.js"></script>
+    <script src="modules/main/common/directives/tbCurrency.js"></script>
+    <script src="modules/main/common/directives/tbForminput.js"></script>
+    <script src="modules/main/common/directives/tbNavBar.js"></script>
+    <script src="modules/main/common/directives/tbTranslater.js"></script>
+    <script src="modules/main/common/directives/tbUser.js"></script>
+    <script src="modules/main/common/directives/tbWorkSpinner.js"></script>
+    <script src="modules/main/common/directives/tbtimepickerPop.js"></script>
+    <script src="modules/main/common/services/addToken.js"></script>
+    <script src="modules/main/common/services/alerting.js"></script>
+    <script src="modules/main/common/services/authorizationResource.js"></script>
+    <script src="modules/main/common/services/authorizationResourceMock.js"></script>
+    <script src="modules/main/common/services/clientResource.js"></script>
+    <script src="modules/main/common/services/currentUser.js"></script>
+    <script src="modules/main/common/services/exceptionHandler.js"></script>
+    <script src="modules/main/common/services/fillPayment.js"></script>
+    <script src="modules/main/common/services/formEncode.js"></script>
+    <script src="modules/main/common/services/idle.js"></script>
+    <script src="modules/main/common/services/localStorage.js"></script>
+    <script src="modules/main/common/services/loginRedirect.js"></script>
+    <script src="modules/main/common/services/oauth.js"></script>
+    <script src="modules/main/common/services/optionValues.js"></script>
+    <script src="modules/main/common/services/optionValuesResource.js"></script>
+    <script src="modules/main/common/services/requestCounter.js"></script>
+    <script src="modules/main/common/services/stateChangeErrors.js"></script>
+    <script src="modules/main/common/services/utilities.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+
+    <!-- endbuild -->
+</body>
+
+</html>

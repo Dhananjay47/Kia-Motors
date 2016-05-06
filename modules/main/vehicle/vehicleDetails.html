@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4 translate>Vehicle</h4>
+    <div ui-view></div>
+  </div>  
+  <div class="col-md-6">
+    <h4>{{'Owners' | translate}} <span class="badge">{{vm.owners.length}}</span></h4>
+    <div ng-if="vm.vehicle.ID && vm.owners.length">
+      <div class="row" ng-repeat="owner in vm.owners" ng-class-odd="'oddRow'" ng-class-odd="'evenRow'">
+      	<p>
+	        <strong>{{ owner.Name }}</strong>
+	        <div>
+	        	{{ owner.Address1 }}<span ng-if="owner.Address2">, {{ owner.Address2 }}</span><span ng-show="!!owner.Address3">, {{ owner.Address3 }}</span>, {{ owner.City }}, 
+	        	{{ owner.State }} {{ owner.ZipCode }}
+	        </div>
+    	</p>
+      </div>
+    </div>
+  </div>
+</div>

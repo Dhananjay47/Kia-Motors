@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="row oddRow">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Transaction:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.AuthorityTransactionNumber}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Roadway:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.RoadName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Transponder Number:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.TagNumber}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Plaza:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.PlazaName}}
+            </div>
+        </div>
+
+        <div class="row oddRow">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Plate Number:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.LicencePlateNumber}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Lane:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.LaneName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Date/Time:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.TransactionDateTime | date:"yyyy-MM-dd @ h:mma"}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Lane Sequence:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.LaneSequenceNumber}}
+            </div>
+        </div>
+        <div class="row oddRow">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Vehicle Class:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.VehicleClassDescription}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                Toll Fare:
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                {{details.TollAmountValue | currency}}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4" ng-if="canEditVehicleClass">
+        <tb-transaction-class-mismatches details="details" vehicleClasses="vehicleClasses"></tb-transaction-class-mismatches>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+
+<div class="panel panel-default" ng-show="transactionsList">
+    <div class="panel-heading">
+        Transactions Search Result <span class="badge">{{transactionsList.length}}/{{transactions.Paging.NoOfRecords}}</span>
+    </div>
+    <div id="transactionsContainer" class="panel-body" style="overflow-y: scroll; height: 200px">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th ng-click="changeSorting('AuthorityTransactionNumber')">
+                        Transaction
+                        <i class="glyphicon" ng-class="getIcon('AuthorityTransactionNumber')" ng-init="getIcon('AuthorityTransactionNumber')"></i>
+                    </th>
+                    <th ng-click="changeSorting('TagNumber')">
+                        Transponder
+                        <i class="glyphicon" ng-class="getIcon('TagNumber')" />
+                    </th>
+                    <th ng-click="changeSorting('PlazaName')">
+                        Plaza
+                        <i class="glyphicon" ng-class="getIcon('PlazaName')" />
+                    </th>
+                    <th ng-click="changeSorting('LaneName')">
+                        Lane
+                        <i class="glyphicon" ng-class="getIcon('LaneName')" />
+                    </th>
+                    <th ng-click="changeSorting('LaneSequenceNumber')">
+                        Lane Sequence
+                        <i class="glyphicon" ng-class="getIcon('LaneSequenceNumber')" />
+                    </th>
+                    <th ng-click="changeSorting('LicencePlateNumber')">
+                        Plate Number
+                        <i class="glyphicon" ng-class="getIcon('LicencePlateNumber')" />
+                    </th>
+                    <th ng-click="changeSorting('TransactionDateTime')">
+                        Date/Time
+                        <i class="glyphicon" ng-class="getIcon('TransactionDateTime')" />
+                    </th>
+                    <th ng-click="changeSorting('VehicleClassDescription')">
+                        Vehicle Class
+                        <i class="glyphicon" ng-class="getIcon('VehicleClassDescription')" />
+                    </th>
+                    <th ng-click="changeSorting('RoadName')">
+                        Roadway
+                        <i class="glyphicon" ng-class="getIcon('RoadName')" />
+                    </th>
+                    <th ng-click="changeSorting('TollAmountValue')">
+                        Toll Fare
+                        <i class="glyphicon" ng-class="getIcon('TollAmountValue')" />
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="transactionListTable">
+                <tr ng-repeat="r in transactionsList">
+                    <td>{{ r.AuthorityTransactionNumber }}</td>
+                    <td translate>{{ r.TagNumber }}</td>
+                    <td translate>{{ r.PlazaName }}</td>
+                    <td translate>{{ r.LaneName }}</td>
+                    <td translate>{{ r.LaneSequenceNumber }}</td>
+                    <td translate>{{ r.LicencePlateNumber }}</td>
+                    <td translate>{{ r.TransactionDateTime | date:"yyyy-MM-dd @ h:mma"}}</td>
+                    <td translate>{{ r.VehicleClassDescription }}</td>
+                    <td translate>{{ r.RoadName }}</td>
+                    <td>{{ r.TollAmountValue | currency}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm" ng-click="showDetails(r)">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<tb-notes notes="vmNote.newNotes" accountid="vmNote.accountId" isnew></tb-notes>
+<div ng-repeat="notes in vmNote.notes | orderBy:'-CreateDate'" ng-class-odd="'oddRow'" ng-class-even="'evenRow'">
+    <tb-notes notes="notes" accountid="vmNote.accountId"></tb-notes>
+</div>

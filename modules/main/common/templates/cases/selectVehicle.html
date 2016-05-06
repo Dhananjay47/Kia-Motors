@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <span class="glyphicon glyphicon-remove pointer pull-right" ng-click="cancel(vm.ReturnValue)" />
+  <h3 class="modal-title">{{vm.Message}}</h3>
+</div>
+<div class="modal-body">
+  <form name="vehicleForm" ng-submit="vm.submit()" novalidate>
+    <div forminput class="row" ng-repeat="vehicle in vm.vehicles | orderBy:'SortOrder'" ng-if="vm.vehicles.length">
+      <div class="col-md-2">
+        <label for="vehicleId{{$index+1}}">
+                <input type="radio" name="vehicleId" id="vehicleId{{$index+1}}" ng-model="vm.ReturnValue" ng-value="vehicle.ID" ng-required="!vm.ReturnValue">
+                {{ vehicle.PlateNumber }}</label>
+      </div>
+      <div class="col-md-3">
+        {{ vehicle.ClassName }}
+      </div>
+      <div class="col-md-1">
+        {{ vehicle.PlateState }}
+      </div>
+      <div class="col-md-2">
+        {{ vehicle.Make }}
+      </div>
+      <div class="col-md-2">
+        {{ vehicle.Model }}
+      </div>
+      <div class="col-md-2">
+        {{ vehicle.Year }}
+      </div>
+    </div>
+    <div class="row oddRow" ng-hide="vm.vehicleCreated">
+      <div class="col-md-12">
+        <label for="newVehicleId">
+          <input type="radio" name="vehicleId" id="newVehicleId" ng-model="vm.ReturnValue" ng-value=0 
+            ng-required="!vm.ReturnValue" ng-click="isFirstLoad = false">
+          {{ 'NewVehicle' | translate }}
+        </label>
+      </div>
+    </div>
+    <div class="row oddRow" ng-hide="vm.ReturnValue || isFirstLoad" ng-model="isFirstLoad">
+      <div class="col-md-7 col-md-offset-1">
+        <tb-vehicle></tb-vehicle>        
+      </div>
+      <div class="col-md-4">
+        <!-- {{vm.ReturnValue}} -->
+      </div>
+    </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="submit(vm.ReturnValue)" ng-disabled="!vm.ReturnValue">Next</button>
+</div>
+</form>

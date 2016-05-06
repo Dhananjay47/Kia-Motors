@@ -1,0 +1,21 @@
+<li ng-class="{dropdown: islogin}" ng-attr-dropdown="islogin">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle role="button" aria-expanded="true" ng-if="islogin">
+        <i class="glyphicon glyphicon-user"></i>
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu" ng-if="islogin">
+        <li><a href="#">{{"Signedinas" | translate}} {{ username }}</a></li>
+        <li><a ui-sref="transactionSearch" ng-if="hasPermission({Resource: 'transactionsearch', Action: 'get'})">Image Viewer</a></li>
+        <li><a ui-sref="report" ng-if="hasPermission({Resource: 'report', Action: 'all'})" class="pointer">Tableau Reporting <i class="fa fa-bar-chart"></i></a></li>
+        <li><a href="/src/pos/index.html">POS</a></li>
+        <li class="divider"></li>
+        <li>
+            <a ng-click="logout()" class="pointer">
+                <i class="fa fa-unlock"></i> {{'LOGOUT' | translate}}
+            </a>
+        </li>
+    </ul>
+    <a ui-sref="login" ng-if="!islogin">
+        <i class="glyphicon glyphicon-lock"></i>LOGIN
+    </a>
+</li>

@@ -1,0 +1,39 @@
+    <div forminput>
+        <label for="address1" class="col-lg-2 col-md-2 col-sm-2" >{{"Address" | translate}} 1</label>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <input id="address1" name="address1" type="text" ng-model="address.Address1" required placeholder="{{'Address' | translate }}1" />
+        </div>
+    </div>
+    <div forminput>
+        <label for="address2" class="col-lg-2 col-md-2 col-sm-2" >{{"Address" | translate}} 2</label>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <input id="address2" name="address2" type="text" ng-model="address.Address2" placeholder="{{'Address' | translate }}2" />
+        </div>
+    </div>
+    <div forminput>
+        <label for="address3" class="col-lg-2 col-md-2 col-sm-2" >{{"Address" | translate}} 3</label>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <input id="address3" name="address3" type="text" ng-model="address.Address3" placeholder="{{'Address' | translate }}3" />
+        </div>
+    </div>
+    <div forminput>
+        <label for="city" class="col-lg-2 col-md-2 col-sm-2" translate>City</label>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <input id="city" name="city" type="text" ng-model="address.City" required placeholder="{{'City' | translate }}" />
+        </div>
+    </div>    
+    <div forminput>
+        <label for="state" class="col-lg-2 col-md-2 col-sm-2" translate>State</label>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <select ng-model="address.State" name="state" id="state" ng-options="state.Name as state.Name for state in states" required>
+                <option value=''>--</option>
+            </select>
+        </div>
+    </div>
+    <div forminput>
+        <label for="zipcode" class="col-lg-2 col-md-2 col-sm-2" translate>ZipCode</label>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <input id="zipcode" name="zipcode" type="text" ng-model="address.ZipCode" required
+                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 ||  event.keyCode == 8 || event.keyCode == 127' placeholder="{{'ZipCode' | translate }}" />
+        </div>
+    </div>

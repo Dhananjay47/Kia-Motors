@@ -1,0 +1,93 @@
+
+<form name="transactionSearchForm" class="navbar-form text-left" ng-submit="search()" style="padding-left: 20px; padding-right: 5px;">
+
+    <!--<div class="row">-->
+        <!--<div class=" col-lg-10 col-md-10 col-sm-10">-->
+
+            <div forminput class="text-left form-group">
+                <div class="input-group" style="padding: 0px;">
+                    <div class="input-group" style="border-top-left-radius: 25px;">
+                        <span class="input-group-addon" style="padding: 0px; border-radius: 5px 0px 0px 5px;">
+                            <span ng-class="{showText: searchOption.criteria === 'inclusive', hideText: searchOption.criteria !== 'inclusive'}" >
+                                <input class="form-control" type="text" style="border-width: 0px;" datepicker-popup="{{'MM-dd-yyyy'}}" ng-model="fromDate" size="7" ng-class="{showText: searchOption.criteria === 'inclusive', hideText: searchOption.criteria !== 'inclusive'}"
+                                       is-open="calendarOpened1" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-disabled="true"
+                                       close-text="Close" disabled placeholder="From date" />
+                            </span>
+                            <span>
+                                <button type="button" class="btn btn-default" ng-click="openFrom($event)" ng-disabled="searchOption.criteria ==='exclusive'">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                            <span>
+                                <timepicker-pop input-time="fromDate" class="input-groupng-isolate-scope" show-meridian='true'
+                                                ng-class="{showText: searchOption.criteria === 'inclusive', hideText: searchOption.criteria !== 'inclusive'}" />
+                            </span>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" style="padding: 0px; border-radius: 0px 5px 5px 0px;">
+                            <span ng-class="{showText: searchOption.criteria === 'inclusive', hideText: searchOption.criteria !== 'inclusive'}">
+                                <input class="form-control" type="text" style="border-width: 0px;" datepicker-popup="{{'MM-dd-yyyy'}}" ng-model="toDate" size="7"
+                                       is-open="calendarOpened2" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-disabled="true"
+                                       close-text="Close" disabled placeholder="To date" />
+                            </span>
+                            <span>
+                                <button type="button" class="btn btn-default" ng-click="openTo($event)" ng-disabled="searchOption.criteria ==='exclusive'">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                            <span>
+                                <timepicker-pop input-time="toDate" class="input-groupng-isolate-scope" show-meridian='true'
+                                                ng-class="{showText: searchOption.criteria === 'inclusive', hideText: searchOption.criteria !== 'inclusive'}" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <span>
+                        <select name="searchOption" style="margin-left: 5px;" id="searchOption" class="form-control" 
+                                ng-model="searchOption" 
+                                ng-change="resetValues(); checkMismatch()" 
+                                ng-options="searchOption.name | translate for searchOption in transactionsSearchOptions" 
+                                class="form-control"></select>
+                        <button ng-disabled="formIsNotValid()" class="form-control btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                        <input type="search" class="form-control" placeholder="{{'Search' | translate }}"
+                               ng-model="transactionQueryString" 
+                               ng-show="searchOption.name !=='Road/Plaza/Lane' && searchOption.name !=='OpenClassMismatches' ">
+                    </span>
+                </div>
+
+                <div class="input-group">
+                    <span>
+                        <select name="authority" id="authority" style="margin-left: 5px;" ng-model="authorityID" ng-change="queryRoads(authorityID); roads = null"
+                                ng-options="authority.ID as authority.Name for authority in authorities" class="form-control" ng-show="searchOption.name ==='Road/Plaza/Lane'">
+                            <option value="" selected>Authority</option>
+                        </select>
+                        <select name="road" id="road" ng-model="roadID" ng-disabled="!authorityID" ng-change="queryPlazas(); plazas = null"
+                                ng-options="road.RoadID as road.Name for road in roads" class="form-control" ng-show="searchOption.name ==='Road/Plaza/Lane'">
+                            <option value="" selected>Road</option>
+                        </select>
+                        <select name="plaza" id="plaza" ng-model="plazaID" ng-disabled="!roadID" ng-change="queryLanes(); lanes = null"
+                                ng-options="plaza.PlazaID as plaza.Name for plaza in plazas" class="form-control" ng-show="searchOption.name ==='Road/Plaza/Lane'">
+                            <option value="" selected>Plaza</option>
+                        </select>
+                        <select name="lane" id="lane" ng-model="laneID" ng-disabled="!plazaID"
+                                ng-options="lane.LaneID as lane.Name for lane in lanes" class="form-control" ng-show="searchOption.name ==='Road/Plaza/Lane'">
+                            <option value="" selected>Lane</option>
+                        </select>
+                    </span>
+                </div>
+
+            </div>
+
+        <!--</div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 text-right" ng-show="transactions">
+            <button ng-click="moreResults()" class="btn btn-default">More results...</button>
+        </div>
+    </div>-->
+
+</form>

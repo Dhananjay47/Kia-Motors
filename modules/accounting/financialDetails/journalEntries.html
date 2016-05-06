@@ -1,0 +1,59 @@
+
+<div data-role="page" id="index" ng-if="vm.currentUser.token" >
+
+<div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-1">
+        <a class="btn btn-default btn-sm" ng-click="vm.openJournalItemEdit()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>        
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-2">
+        <p class="input-group">
+            <input type="text" class="form-control" datepicker-popup="{{'MM-dd-yyyy'}}" ng-model="vm.fromDate"
+                   is-open="vm.calendarOpened1" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                   ng-required="true" close-text="Close" disabled placeholder="From date"/>
+            <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="vm.openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+        <p class="input-group">
+            <input type="text" class="form-control" datepicker-popup="{{'MM-dd-yyyy'}}" ng-model="vm.toDate"
+                   is-open="vm.calendarOpened2" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" 
+                   ng-required="true" close-text="Close" disabled placeholder="To date"/>
+            <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="vm.openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+        <select ng-model="vm.reasonID" ng-init="vm.reasonID = null" name="reasons" id="reasons" required
+                ng-options="code.ID as code.Name for code in vm.reasons" class="form-control"></select>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+        <select ng-model="vm.clientID" ng-init="vm.clientID = null" name="client" id="client" required
+                ng-options="client.ID as client.Name for client in vm.clients" class="form-control"></select>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2" >
+        <button id="btnOKQuery" class="btn btn-primary" type="button" ng-click="vm.executeQuery();">
+            <span>OK</span>
+        </button>
+        <button id="btnOKReset" class="btn btn-primary" type="button" ng-click="vm.resetCriteria();">
+            <span translate>{{'Reset' | translate}}</span>
+        </button>
+</div>
+</div>
+
+<p class="content-padded"></p>
+<div class="panel panel-default oPayments">
+
+    <div id="my-tab-content" class="tab-content">
+
+        <div ui-grid="vm.gridOptions" ui-grid-edit ui-grid-cellnav class="grid"></div>
+    </div>
+
+</div>
+    
+</div>

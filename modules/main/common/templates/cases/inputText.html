@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <span class="glyphicon glyphicon-remove pointer pull-right" ng-click="cancel(returnValue)" />
+    <h3 class="modal-title">{{vm.Message}}</h3>
+</div>
+<form name="inputTextForm" ng-submit="submit()" novalidate>
+    <div class="modal-body">
+        <div forminput class="row">
+            <div class="col-md-10">
+                <input id="inputText" name="inputText" type="text" ng-model="returnValue" required autofocus auto-focus> {{vm.ReturnValue}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="submit(returnValue)">Next</button>
+        <!-- <button class="btn btn-warning" ng-click="$dismiss()">Cancel</button> -->
+    </div>
+</form>

@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Account Search Result <span class="badge">{{vm.accounts.length}}</span>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td translate>Name</td>
+          <td translate>Type</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="account in vm.accounts">
+          <td>{{ account.Name }}</td>
+          <td translate>{{ account.AccountType }}</td>
+          <td>
+            <a class="btn btn-default btn-sm" ng-href="#/account/{{account.ID}}/activity">
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

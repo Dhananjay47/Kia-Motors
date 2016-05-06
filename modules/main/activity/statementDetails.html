@@ -1,0 +1,39 @@
+<accordion>
+  <accordion-group ng-repeat="activity in details | orderBy:'-DetailsDateTime'" is-open="isOpen">
+    <accordion-heading>      
+      <div class="row">
+        <div class="col-sm-3">{{ activity.DetailsDateTime | date : 'MM/dd/yy HH:mm' }}</div>
+        <div class="col-sm-3" style="text-align:left;">
+          {{ activity.Type | translate }}
+        </div>
+
+        <div class="col-sm-3">
+            <span ng-if="activity.Details">
+                <span translate>
+                    {{activity.Details}}
+                </span>
+            </span> 
+            <!--<span ng-if="activity.Type != 'Payment'">{{activity.Details}}</span>--> 
+          <!-- <span ng-if="activity.TransactionDate"> | {{ activity.TransactionDate | date : 'MM/dd/yy HH:mm' }}</span> -->
+        </div>
+        <div class="col-sm-2" style="text-align:right;">
+        	{{ activity.Amount | currency }}
+        </div>
+        <div class="col-sm-1" class="pull-right">
+        	<i class="glyphicon" ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-right': !isOpen}"></i>
+        </div>
+      </div>      
+    </accordion-heading>
+    <div ng-repeat="(key, value) in activity.MoreInfo">
+      <div class="row">
+        <div class="col-sm-5" translate>{{key}}</div>
+        <div class="col-sm-7" ng-if="isDate(key)">{{value | date : 'MM/dd/yy HH:mm' }}</div>
+          <div class="col-sm-7" ng-if="!isDate(key)">
+              <span translate>
+                  {{ format(key, value) }}
+              </span>
+          </div>
+      </div>
+    </div>
+  </accordion-group>
+</accordion>

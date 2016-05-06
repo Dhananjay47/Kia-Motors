@@ -1,0 +1,51 @@
+<form name="posForm" class="form-horizontal" novalidate>
+
+    <div class="modal-header">
+        <b>{{ 'Select' | translate }} {{ 'Account' | translate }}</b>
+        <button type="button" class="close" data-dismiss="modal" style="width:20px;" ng-click="$dismiss()"><span aria-hidden="true" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
+    </div>
+
+    <div class="modal-body col-lg-12 col-md-12 col-sm-12">
+
+        <div class="row">
+            <div class="col-md-8">
+                <select ng-model="vm.accountSelected[0].ID" ng-change="alert('yes')" name="account1" id="account1" autofocus
+                        ng-options="account.ID as account.Name for account in vm.accountsLevel[0]" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1" />
+            <div class="col-md-8">
+                <select ng-model="vm.accountSelected[1].ID" name="account2" id="account2" ng-hide="!vm.accountSelected[0].ID || !vm.accountSelected[0].cascadeID"
+                        ng-options="account.ID as account.Name for account in vm.accountsLevel[1]" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2" />
+            <div class="col-md-8">
+                <select ng-model="vm.accountSelected[2].ID" name="account3" id="account3" ng-hide="!vm.accountSelected[1].ID || !vm.accountSelected[1].cascadeID"
+                        ng-options="account.ID as account.Name for account in vm.accountsLevel[2]" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" />
+            <div class="col-md-8">
+                <select ng-model="vm.accountSelected[3].ID" name="account4" id="account4" ng-hide="!vm.accountSelected[2].ID || !vm.accountSelected[2].cascadeID"
+                        ng-options="account.ID as account.Name for account in vm.accountsLevel[3]" class="form-control">
+                    <option value=''>--</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button id="btnOKLane" type="submit" class="btn btn-primary btn-sm" ng-disabled="!vm.enableOK" ng-click="$close(vm.account)">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" ng-click="$dismiss()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+    </div>
+
+</form>

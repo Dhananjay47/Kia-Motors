@@ -1,0 +1,22 @@
+<div class="container">
+    <form name="registerForm" ng-submit="vm.register(registerForm)" novalidate class="form-signin">
+        <h2 class="form-signin-heading" translate>REGISTER</h2>
+        <div forminput>
+            <input type="text" placeholder="{{'EMAIL_ADDRESS' | translate }}" name="email" ng-model="vm.email" required>                    
+        </div>
+        <div forminput>
+            <input type="password" placeholder="{{'PASSWORD' | translate }}" name="password" ng-model="vm.password" required>
+        </div>
+        <div forminput>
+            <input type="password" placeholder="{{'CONFIRM_PASSWORD' | translate }}" name="confirmpassword" ng-model="vm.confirmpassword" required>
+        </div>
+        <div forminput>
+            <input type="text" placeholder="{{'FIRST_NAME' | translate }}" name="firstname" ng-model="vm.firstname" required>
+        </div>
+        <div forminput>
+            <input type="text" placeholder="{{'LAST_NAME' | translate }}" name="lastname" ng-model="vm.lastname" required>
+        </div>        
+        <button type="submit" class="btn btn-primary btn-block" translate>REGISTER</button>
+    </form>
+    <alerts></alerts>
+</div>

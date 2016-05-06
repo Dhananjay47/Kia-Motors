@@ -1,0 +1,104 @@
+<form name="paymentForm" class="form-horizontal" ng-submit="vm.submit()" novalidate>
+  <!--     <div forminput class="row">
+      <label for="plateState">PlateState</label>
+      <select ng-model="vm.vehicle.PlateState" name="plateState" id="plateState" ng-options="state.Name as state.Value for state in vm.states">
+      </select>
+    </div> -->
+  <fieldset class="well the-fieldset">
+    <legend translate>{{ 'PaymentInfo' | translate }}</legend>
+    <div forminput class="row">
+      <label for="paymentAmount" class="col-md-2" translate>{{'PaymentAmount' | translate }}</label>
+      <div class="col-md-6">        
+        <input id="paymentAmount" name="paymentAmount" type="text" ng-model="vm.payment.Amount" tb-currency="number" aria-label="amount" min="0" required placeholder="$0.00">
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="postDate" class="col-md-2" translate>{{'PostDate' | translate }}</label>
+      <div class="col-md-6">
+        <input datepicker-popup id="postDate" name="postDate" type="date" ng-model="vm.payment.TenderDate" required datepicker-popup="{{format}}" min-date="minDate" max-date="'2015-06-22'" >
+        <!--           <div class="input-group-addon">
+            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </div> -->
+      </div>
+     </div>
+  </fieldset>
+  <fieldset class="well the-fieldset">
+    <legend class="the-legend" translate>{{'FinancialInstitutionInfo' | translate}}</legend>
+    <div forminput class="row">
+      <label for="institutionName" class="col-md-2">{{'InstitutionName' | translate}}</label>
+      <div class="col-md-6">
+        <input id="institutionName" name="institutionName" type="text" ng-model="vm.payment.InstitutionName" placeholder="Bank of your choice" required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="routingNumber" class="col-md-2">{{'RoutingNumber' | translate }}</label>
+      <div class="col-md-6">
+        <input id="routingNumber" name="routingNumber" type="text" ng-model="vm.payment.PaymentMethod.RoutingNumber" 
+          ng-pattern="/^((0[0-9])|(1[0-2])|(2[1-9])|(3[0-2])|(6[1-9])|(7[0-2])|80)([0-9]{7})$/" 
+          placeholder="{{'9DigitsNumber' | translate}}"      
+          required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="accountNumber" class="col-md-2">{{ 'AccountNumber' | translate }}</label>
+      <div class="col-md-6">
+        <input id="accountNumber" name="accountNumber" type="text" ng-model="vm.payment.PaymentMethod.AccountNumber" placeholder="{{ 'AccountNumber' | translate }}" required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="accountHolder" class="col-md-2">AccountHolder</label>
+      <div class="col-md-6">
+        <input id="accountHolder" name="accountHolder" type="text" ng-model="vm.payment.PaymentMethod.AccountHolderName" placeholder="{{ 'FullName' | translate }}"required>
+      </div>
+    </div>
+    <div forminput class="row">
+      <label for="email" class="col-md-2">Email</label>
+      <div class="col-md-6">
+        <input id="email" name="email" type="email" ng-model="vm.payment.PaymentMethod.EmailAddress" placeholder="youremail@example.com">
+      </div>
+    </div>
+    <div class="row" forminput>
+      <label for="accountType" class="col-md-2">{{'AccountType' | translate}}</label>
+      <div id="accountType" class="col-md-6">
+        <label class="radio-inline">
+          <input type="radio" name="accountType" id="accountTypeChecking" ng-model="vm.payment.AccountType">{{'CheckingMoneyMarket' | translate}}
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="accountType" id="accountTypeSaving" ng-model="vm.payment.AccountType">Savings
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  <!--TODO: Restore charge a fee after degraded mode period-->
+  <!--<fieldset class="well the-fieldset">
+    <legend translate>TotalAmount</legend>
+    <div forminput class="row">
+      <label for="feeAmount" class="col-md-3">{{'ConvenienceFeeAmount' | translate }}
+        <a href="#" tooltip-placement="right" tooltip="Help text with translation"><i class="glyphicon glyphicon-question-sign"></i></a>
+      </label>
+      <div class="col-md-3">
+        <select ng-model="vm.payment.fee" name="feeAmount" id="feeAmount" ng-options="feeOption.Value for feeOption in vm.feeAmountOptions">
+        </select>
+      </div>
+      <label for="isFeeWaved" class="col-md-6">
+        <input type="checkbox" name="isFeeWaved" id="isFeeWaved" ng-model="vm.payment.isFeeWaved">{{'WaiveFee' | translate}}
+      </label>
+    </div>
+        <div class="row">      
+      <label for="totalAmount" class="col-md-3 control-label" translate>TotalAmount</label>
+      <div class="col-md-5">
+        <pre id="totalAmount">$ {{vm.payment.paymentTotal | currency}}</pre>
+      </div>
+    </div>
+  </fieldset <div class="form-group row">-->
+  <div class="btn-group col-md-1 col-md-offset-2">
+    <button type="submit" class="btn btn-primary" ng-disabled="paymentForm.$invalid">
+      <span translate>MakePayment</span>
+    </button>
+  </div>
+  <div class="btn-group col-md-8 col-md-offset-1">
+    <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+      <span translate>Cancel</span>
+    </button>
+  </div>
+</form>

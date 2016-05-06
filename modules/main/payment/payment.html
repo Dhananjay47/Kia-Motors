@@ -1,0 +1,63 @@
+<form name="paymentForm" class="form-horizontal" ng-submit="submit()" novalidate>
+  <fieldset class="well well-sm fieldset">
+    <legend class="the-legend" translate>{{'PaymentInfo' | translate}}</legend>
+    <div forminput class="row">
+      <label for="paymentAmount" class="col-md-2" translate>PaymentAmount</label>
+      <div class="col-md-6">        
+        <input id="paymentAmount" name="paymentAmount" type="text" ng-model="charge" tb-currency="number" aria-label="amount" min="0" required placeholder="$0.00">
+      </div>
+    </div>
+<!--     <div forminput class="row">
+      <label for="postDate" class="col-md-2" translate>PostDate</label>
+      <div class="col-md-6">
+        <input datepicker-popup id="postDate" name="postDate" type="date" ng-model="payment.TenderDate" required datepicker-popup="{{format}}" min-date="minDate" max-date="'2015-06-22'" >
+      </div>
+  	</div> -->
+  </fieldset>
+  <div ng-switch="paymentType">
+    <div ng-switch-when="ach">
+      <payment-ach></payment-ach>
+    </div>
+    <div ng-switch-when="creditCard">
+      <payment-credit-card></payment-credit-card>
+    </div>
+    <div ng-switch-default></div>
+  </div>  
+  <!--TODO: Restore charge a fee after degraded mode period-->
+  <!--<fieldset class="well well-sm fieldset">
+    <legend class="the-legend" translate>TotalAmount</legend>
+    <div forminput class="row">
+      <label for="feeAmount" class="col-md-3">{{'ConvenienceFeeAmount' | translate }}
+        <a href="#" tooltip-placement="right" tooltip="Help text with translation"><i class="glyphicon glyphicon-question-sign"></i></a>
+      </label>
+      <div class="col-md-3">
+        <select ng-model="fee" name="feeAmount" id="feeAmount" ng-options="feeOption for feeOption in [10, 15, 20]" ng-required="!isFeeWaived" ng-disabled="isFeeWaived">
+        </select>
+      </div>
+      <label for="isFeeWaived" class="col-md-6">
+        <input type="checkbox" name="isFeeWaived" id="isFeeWaived" ng-model="isFeeWaived" ng-change="resetFee(isFeeWaived)">{{'WaiveFee' | translate}}
+      </label>
+    </div>
+        <div class="row">      
+      <label for="totalAmount" class="col-md-3 control-label" translate>TotalAmount</label>
+      <div class="col-md-5">
+        <pre id="totalAmount"> {{charge--fee | currency}} </pre>
+      </div>
+    </div>
+  </fieldset>-->
+ <div class="form-group row">
+  <div class="btn-group col-md-1 col-md-offset-2">
+    <button type="submit" class="btn btn-primary" ng-disabled="paymentForm.$invalid">
+      <span translate>MakePayment</span>
+    </button>
+  </div>
+  <div class="btn-group col-md-8 col-md-offset-1">
+      <button ng-if="isShoppingCart == true" type="button" class="btn btn-default" ng-click="$dismiss()">
+          <span translate>Cancel</span> 
+      </button>
+      <button ng-if="isShoppingCart != true" type="button" class="btn btn-default" onclick="location.reload()">
+          <span translate>Reset</span>
+      </button>
+  </div>
+  </div>
+</form>

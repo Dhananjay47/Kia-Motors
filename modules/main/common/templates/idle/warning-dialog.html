@@ -1,0 +1,7 @@
+<div class="modal-header">
+    <h3>Idle Session</h3>
+</div>
+<div idle-countdown="countdown" ng-init="countdown=20" class="modal-body">
+    <small><em>You will be logged out in ... </em></small>
+    <progressbar max="20" value="countdown" animate="false" class="progress-striped active" type="danger">{{countdown}}</progressbar>
+</div>

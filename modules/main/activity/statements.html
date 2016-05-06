@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td></td>
+            <td translate>Number</td>
+            <td translate>Balance</td>
+            <td translate>ClosingDate</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="statement in statements" ng-click="toggleCheckbox(statement)" class="pointer">
+            <td>
+                <span class="ui-checkbox">
+                    <input type="checkbox" ng-model="statement.isChecked"
+                           ng-change="state.toggleDetails(statement.Transactions, statement.Payments, statement.Adjustments)"
+                           ng-click="$event.stopPropagation()" />
+                </span>
+            </td>
+            <td>{{ statement.StatementNumber }}</td>
+            <td>{{ statement.ClosingBalance | currency }}</td>
+            <td>{{ statement.ClosingDate | date:'MM/dd/yyyy' }}</td>
+        </tr>
+    </tbody>
+</table>

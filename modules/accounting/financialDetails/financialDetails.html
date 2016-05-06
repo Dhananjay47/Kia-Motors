@@ -1,0 +1,19 @@
+
+<div class="panel panel-default">
+
+    <h1 class="panel-heading">
+        Financial Details
+    </h1>
+
+    <div class="panel-body">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ui-sref-active="active"><a ui-sref="financialDetails.journalDetails" translate>JournalDetails</a></li>
+            <li role="presentation" ui-sref-active="active"><a ui-sref="financialDetails.journalSummary" translate>JournalSummary</a></li>
+            <li role="presentation" ui-sref-active="active"><a ui-sref="financialDetails.journalEntries" translate>JournalEntries</a></li>
+            <li class="nav-tabs-right"><alerts></alerts></li>
+        </ul>
+        <div ui-view style="padding-top: 15px"></div>
+        <div ui-view="ui-view" style="padding-top: 15px"></div>
+    </div>
+
+</div>

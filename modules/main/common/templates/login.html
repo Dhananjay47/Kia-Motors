@@ -1,0 +1,15 @@
+<div ng-controller="LoginController as login" class="container">
+    <form name="loginForm" ng-submit="login.login(loginForm)" novalidate class="form-signin">
+        <h2 class="form-signin-heading" translate>LOGIN_TITLE</h2>
+        <div class="form-group">
+            <input type="text" placeholder="{{'EMAIL_ADDRESS' | translate }}" name="username" ng-model="login.username" class="form-control" autofocus />
+            <input type="password" placeholder="{{'PASSWORD' | translate }}" name="password" ng-model="login.password" class="form-control" required />
+        </div>
+        <alerts></alerts>
+        <button type="submit" class="btn btn-default btn-block" translate ng-disabled="loginForm.$invalid">SIGN_IN</button>
+        <br>
+        <div>
+            Don't have an account? <a href="register">Sign up now</a>
+        </div>
+    </form>
+</div>

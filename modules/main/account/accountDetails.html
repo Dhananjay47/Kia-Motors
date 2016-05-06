@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{{vm.title | translate}} <!-- <a ui-sref="accountList({queryString: vm.account.Number})">Change account</a>  -->
+	</div>
+
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-9">
+			</div>
+			<div class="account-details-right col-md-3">
+				<div><span translate>CurrentBalance</span>: {{vm.currentBalance | currency}}</div>
+                <button ng-click="vm.selectShoppingCargPaymentMethod()" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-shopping-cart" id="tb-glyphicon"></i></button>
+			</div>
+		</div>
+		<!-- <p style="text-align: right" translate>
+			CurrentBalance: {{vm.currentBalance | currency}}
+		</p> -->
+	<ul class="nav nav-tabs">
+		<li role="presentation" ui-sref-active="active"><a ui-sref="activity" translate>Activity</a></li>
+		<li role="presentation" ui-sref-active="active"><a ui-sref="accountDetails.account" translate>Account</a></li>
+		<li role="presentation" ui-sref-active="active"><a ui-sref="vehicles" translate>Vehicles</a></li>
+		<!-- <li role="presentation" ui-sref-active="active"><a ui-sref="users" translate>Users</a></li> -->
+		<li role="presentation" ui-sref-active="active"><a ui-sref="notes" translate>Notes</a></li>
+		<li ng-if="vm.hasPermission('payment')" role="presentation" ui-sref-active="active"><a ui-sref="payment" translate>Payments</a></li>
+        <li role="presentation" ui-sref-active="active"><a ui-sref="pendingPayments" translate>pendingPayments</a></li>
+		<li class="nav-tabs-right"><alerts></alerts></li>
+	</ul>
+	<div ui-view style="padding-top: 15px"></div>
+	<div ui-view="accountTab" style="padding-top: 15px"></div>
+	</div>
+</div>

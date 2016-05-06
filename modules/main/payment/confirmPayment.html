@@ -1,0 +1,15 @@
+<div class="modal-header">
+	<h3 class="modal-title">Authorization</h3>
+</div>
+<div class="modal-body">
+	<p>I hereby authorize Muncipal Service Bureau to debit my {{model.payment.PaymentMethod.AccountType}} account in the amount of {{model.payment.Amount | currency}}. This authority is to remain in full force and effect one time only effective {{ model.currentDateTime | date}} or until MSB has received written notification from me of its termination in such time and in such manner as to afford MSB their banking institution a reasonable opportunity to act on it.</p>
+	<div class="row">
+		<label for="iagree" class="col-md-6">
+        	<input type="checkbox" name="iagree" id="iagree" ng-model="iagree" class="checkbox" required>{{'IAgree' | translate}}
+      	</label>
+  </div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="$close(vm.payment)" ng-disabled="!iagree">Make Payment</button>
+	<button class="btn btn-warning" ng-click="$dismiss()">Cancel</button>
+</div>

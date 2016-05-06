@@ -1,0 +1,38 @@
+<!--Actions -->
+<div class="row">
+  <div class="btn-group col-md-1" dropdown>
+    <button type="button" dropdown-toggle class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      {{'Action' | translate}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href ng-click="beginWorkflow('IssueCredit')">{{'IssueCredit' | translate}}</a></li>
+      <li><a href ng-click="beginWorkflow('Misc_Charge')">{{'Misc_Charge' | translate}}</a></li>
+      <li><a href ng-click="beginWorkflow('Issue_Transponder')">{{'Issue_Transponder' | translate}}</a></li>
+    </ul>
+  </div>
+</div> 
+<br>
+<!-- Statements and details -->
+<div class="row">
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{'Statements' | translate}} <span class="badge">{{statements.length}}</span></h3>
+      </div>
+      <div class="panel-body">
+        <activity-statements data="statements"></activity-statements>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{'Details' | translate}}</h3>        
+      </div>
+      <div class="panel-body">
+        <activity-details data="statements"></activity-details>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <span class="badge">{{vm.statements.length}}</span>

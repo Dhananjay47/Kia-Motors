@@ -1,0 +1,86 @@
+
+
+<form name="posForm" class="form-horizontal" novalidate>
+
+
+    <div class="modal-body" style="border: none;">
+
+        <div class="modal-header">
+            <b>Journal Entry</b>
+            <button type="button" class="close" data-dismiss="modal" style="width: 20px;" ng-click="$dismiss()"><span aria-hidden="true" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group col-lg-5 col-md-5 col-sm-5" style="padding-top: 34px;">
+                            <input type="text" class="form-control" datepicker-popup="{{'MM-dd-yyyy'}}" ng-model="vm.asOfDate" is-open="vm.calendarOpened" min-date="vm.minDate" max-date="vm.maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" disabled placeholder="As of date"/>
+                        </div>
+                        <div class="form-group col-lg-2 col-md-2 col-sm-2" style="padding-top: 34px;">
+                            <button type="button" class="btn btn-default" ng-click="vm.open($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </div>
+                        <div class="form-group col-lg-5 col-md-5 col-sm-5" style="padding-left: 40px;">
+                            <timepicker ng-model="vm.asOfDate" minute-step="5" show-meridian="true"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 34px;">
+                    <select ng-model="vm.reasonID" ng-init="vm.reasonID = null" name="reasons" id="reasons" required
+                            ng-options="code.ID as code.Name for code in vm.reasons" class="form-control"></select>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 34px;">
+                    <select ng-model="vm.clientID" ng-init="vm.clientID = null" name="client" id="client" required
+                            ng-options="client.ID as client.Name for client in vm.clients" class="form-control"></select>
+                </div>
+            </div>
+
+            <textarea ng-model="vm.note" class="form-control" aria-label="..." maxlength="1000" placeholder="{{JournalDescription | translate}}"/>
+
+            <br/>
+            <div class="row">
+                <div class="col-md-3">
+                    <span>
+                        <button class="btn btn-default btn-sm" ng-click="vm.getNewAccount()">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                        <input id="accountCode" class="btn btn-default" name="accountCode" type="text" ng-model="vm.newAccountCode" style="width: 140px;" ng-disabled="true" class="form-control" placeholder="Account" />
+                        {{vm.newAccountName}}
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <textarea id="newDescription" ng-model="vm.newDescription" class="form-control" aria-label="..." maxlength="1000" placeholder="{{'ItemDescription' | translate}}"/>
+                </div>
+                <div class="col-md-2">
+                    <input id="newDebit" name="newDebit" type="search" ng-model="vm.newDebit" placeholder="{{'Debit' | translate }}" ng-hide="vm.newCredit >0" class="form-control" ui-money-mask/>
+                </div>
+                <div class="col-md-2">
+                    <input id="newCredit" name="newCredit" type="search" ui-money-mask ng-model="vm.newCredit" placeholder="{{'Credit' | translate }}" ng-hide="vm.newDebit >0" class="form-control"/>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-default btn-sm" ng-disabled="!vm.isQuickItemValid()" ng-click="vm.addItem()">
+                        <span class="glyphicon glyphicon-hand-down" style="height: 22px; width: 22px;" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+            </div>
+            <br/>
+
+            <div ui-grid="vm.gridOptions" ui-grid-edit ui-grid-cellnav class="grid"></div>
+        </div>
+    </div>
+    <div class="modal-footer" style="padding-right: 30px;">
+        <span style="color: red; padding-right: 20px;">{{vm.message}}</span>
+        
+        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="!vm.isFormValid()"
+                confirmed-click="vm.saveJournal()"
+                ng-confirm-click="Do you want to save the Journal?">
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" ng-click="$dismiss()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+    </div>
+
+</form>

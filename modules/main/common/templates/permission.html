@@ -1,0 +1,82 @@
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <!-- <div ng-view></div> -->
+                <div class="search span12">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Search Panel</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div class="col-md-1">
+                                <button type="submit" class="btn btn-primary btn-block" ng-disabled="vm.isPermissionMissing('account', 'search')">Search</button>
+                            </div>
+                          </div>
+                        </div>
+                </div>    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">User own</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary btn-block">Search</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>                    
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Account</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary btn-block" ng-disabled="vm.isPermissionMissing('account', 'all')">Search</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Vehicle</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary btn-block" ng-disabled="vm.isPermissionMissing('vehicle', 'all')">Search</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Payment</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary btn-block" ng-disabled="vm.isPermissionMissing('payment', 'all')">Search</button>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>{{'Resource' | translate}}</td>
+                <td>{{'Action' | translate }}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="permission in vm.permissions">
+                <td>{{ permission.Resource }}</td>
+                <td>{{ permission.Action }}</td>
+            </tr>
+        </tbody>
+    </table>

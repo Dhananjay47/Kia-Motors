@@ -1,0 +1,20 @@
+<div>
+    <ul class="image-thumbs">
+        <li ng-repeat="img in images" class="thumbnail pointer">
+            <img ng-src="{{img.FilePath}}" ng-click="setImage(img)">
+
+        </li>
+    </ul>
+    <zoom src="{{mainImageUrl}}" mark-height="100" mark-width="100" zoom-lvl="2" class="image container"></zoom>
+    <aside></aside>
+    <!--
+    <div class="original-image">
+    <img ng-src="{{mainImageUrl}}" class="image container">
+</div>
+-->
+    <!--
+    <div class="zoom-image">
+        <zoom ng-src="{{mainImageUrl}}" />
+    </div>
+-->
+</div>

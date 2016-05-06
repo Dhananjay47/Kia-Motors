@@ -1,0 +1,14 @@
+<li>
+    <form name="accountSearchForm" class="navbar-form" ng-if="islogin" ng-submit="search(searchOption, accountQueryString)">
+        <div class="input-group">
+            <select ng-model="searchOption" name="searchOption" id="searchOption" ng-options="searchOption.name | translate for searchOption in accountSearchOptions" class="form-control">
+            </select>
+            <div class="input-group-btn">
+                <button ng-click="search(searchOption, accountQueryString)" ng-disabled="!accountQueryString" class="form-control btn btn-default" type="button">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+            <input type="search" class="form-control" placeholder="{{'Search' | translate }}" ng-model="accountQueryString" required>
+        </div>
+    </form>
+</li>

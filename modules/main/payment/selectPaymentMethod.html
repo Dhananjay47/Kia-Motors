@@ -1,0 +1,108 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{'Pay' | translate }} Test</h3>
+</div>
+<div class="modal-body">
+    <form name="paymentForm" ng-submit="submit(selectedMethod)" novalidate>
+        <table class="table table-striped">
+            <thead>
+                <tr class="info">
+                    <td colspan="4">
+                        <!--TODO: uncomment after adding check box to add new payment in file-->
+                        <!--Use previous payment method \\-->
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <!--TODO: remove the show false after adding check box to add new payment in file-->
+                <!--<tr ng-repeat="m in pm.PaymentMethods | orderBy:'SortOrder'" ng-show="false">
+                      <td ng-switch on="m.MasterCodeID">
+                        <label ng-switch-when=45001 for="paymentMethodId{{$index+1}}">
+                          <input type="radio" name="paymentMethodId" id="paymentMethodId{{$index+1}}" ng-model="pm.PaymentMethod" ng-value="m" ng-required="!pm.PaymentMethod">
+                          {{ m.AccountTypeCode }}
+                        </label>
+                        <label ng-switch-when=45000 for="paymentMethodId{{$index+1}}">
+                          <input type="radio" name="paymentMethodId" id="paymentMethodId{{$index+1}}" ng-model="pm.PaymentMethod" ng-value="m" ng-required="!pm.PaymentMethod">
+                          {{ m.CardType }}
+                        </label>
+                        <label ng-switch-default for="paymentMethodId{{$index+1}}">
+                          <input type="radio" name="paymentMethodId" id="paymentMethodId{{$index+1}}" ng-model="pm.PaymentMethod" ng-value="m" ng-required="!pm.PaymentMethod">
+                          {{ m.MasterCodeID }}
+                        </label>
+                      </td>
+                      <td ng-switch on="m.MasterCodeID">
+                        <span ng-switch-when=45001>{{ m.AccountNumber }}</span>
+                        <span ng-switch-when=45000>{{ m.CardNumberLast4 }}</span>
+                        <span ng-switch-default>{{ m.CardType }}</span>
+                      </td>
+                      <td ng-switch on="m.MasterCodeID">
+                        <span ng-switch-when=45001>{{ m.RoutingNumber }}</span>
+                        <span ng-switch-when=45000>{{ m.CardExpirationDate }}</span>
+                        <span ng-switch-default>{{ m.CardType }}</span>
+                      </td>
+                </tr>
+                <tr class="info">
+                  <td colspan="3" translate>New</td>
+                </tr>-->
+
+                <tr>
+                    <td>
+                        <label for="paymentMethodIdCc">
+                            <input type="radio" name="paymentMethodId" id="paymentMethodIdCc" ng-model="pm.PaymentMethod"
+                                   ng-value="{AccountID: pm.account.ID, MasterCodeID:45002}" ng-change="getAmount()">
+                            {{ 'EvertecPayment' | translate }} <i class="glyphicon glyphicon-credit-card"></i>
+                        </label>
+                    </td>
+                    <td>
+                        <label for="paymentMethodIdCc">
+                            <input type="radio" name="paymentMethodId" id="paymentMethodIdCc" ng-model="pm.PaymentMethod"
+                                   ng-value="{AccountID: pm.account.ID, MasterCodeID:45000}" ng-change="getAmount()">
+                            {{ 'CreditCard' | translate }} <i class="glyphicon glyphicon-credit-card"></i>
+                        </label>
+                    </td>
+                    <td>
+                        <label for="paymentMethodIdAch">
+                            <input type="radio" name="paymentMethodId" id="paymentMethodIdAch" ng-model="pm.PaymentMethod"
+                                   ng-value="{AccountID: pm.account.ID, MasterCodeID:45001}" ng-required="!pm.PaymentMethod">
+                            {{ 'Checking' | translate }} <i class="glyphicon glyphicon-briefcase"></i>
+                        </label>
+                    </td>
+                </tr>
+                <!-- <tr><td colspan="3">
+                  <label for="paymentAmount" translate>PaymentAmount</label>
+                      <input id="paymentAmount" name="paymentAmount" type="text" ng-model="charge" tb-currency="number" aria-label="amount" min="5" required placeholder="$0.00">
+                </td></tr> -->
+            </tbody>
+        </table>
+
+        <div forminput class="row" >
+            <label for=" paymentamount" class="col-md-3" translate>
+                PaymentAmount
+            </label>
+            <div class="col-md-5">
+                <input id="paymentAmount" name="paymentAmount" type="text" ng-model="pm.charge" tb-currency="number" aria-label="amount" min="5" required placeholder="$0.00" >
+            </div>
+        </div>
+        <!--<div forminput class="row">
+          <label for="feeAmount" class="col-md-3">{{'ConvenienceFeeAmount' | translate}}
+            <a href="#" tooltip-placement="right" tooltip="Help text with translation"><i class="glyphicon glyphicon-question-sign"></i></a>
+          </label>
+          <div class="col-md-3">
+            <select ng-model="pm.fee" name="feeAmount" id="feeAmount" ng-options="feeOption for feeOption in [10, 15, 20]" ng-required="!pm.isFeeWaived" ng-disabled="pm.isFeeWaived">
+            </select>
+          </div>
+          <label for="isFeeWaived" class="col-md-6">
+            <input type="checkbox" name="isFeeWaived" id="isFeeWaived" ng-model="pm.isFeeWaived" ng-change="resetFee(pm.isFeeWaived)">{{'WaiveFee' | translate}}
+          </label>
+        </div>
+            <div class="row">
+          <label for="totalAmount" class="col-md-3 control-label" translate>TotalAmount</label>
+          <div class="col-md-5">
+            <pre id="totalAmount"> {{pm.charge--pm.fee | currency}} </pre>
+          </div>
+        </div>-->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="$close({AccountID: pm.account.ID, charge: pm.charge, isFeeWaived: pm.isFeeWaived, fee: pm.fee, PaymentMethod: pm.PaymentMethod})" ng-disabled="paymentForm.$invalid">{{'MakePayment' | translate}}</button>
+            <button class="btn btn-warning" ng-click="$dismiss()">{{'Cancel' | translate}}</button>
+        </div>
+    </form>
+</div>

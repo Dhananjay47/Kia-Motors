@@ -1,0 +1,37 @@
+<h4>{{ 'Vehicles' | translate }}</h4>
+<a class="btn btn-default btn-sm" ui-sref="editVehicle({id: 0})">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</a>
+
+<table class="table table-striped" ng-show="vm.vehicles">
+  <thead>
+    <tr>
+      <td translate>Transponder</td>
+      <td translate>Plate</td>
+      <td translate>Class</td>
+      <td translate>State</td>            
+      <td translate>Make</td>
+      <td translate>Model</td>
+      <td translate>Year</td>
+      <td translate>Active</td>
+<td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="vehicle in vm.vehicles">
+      <td>{{ vehicle.TransponderNumber }}</td>
+      <td>{{ vehicle.PlateNumber }}</td>
+      <td>{{ vehicle.ClassName }}</td>
+      <td>{{ vehicle.PlateState }}</td>            
+      <td>{{ vehicle.Make }}</td>
+      <td>{{ vehicle.Model }}</td>
+      <td>{{ vehicle.Year }}</td>      
+      <td><input type="checkbox" id="IsActive" name="IsActive" ng-model="vehicle.IsActive" ng-disabled="true" /></td>
+      <td>
+        <a class="btn btn-default btn-sm" ui-sref="editVehicle({id: vehicle.ID})">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
